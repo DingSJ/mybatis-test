@@ -1,5 +1,5 @@
 /**
- *    Copyright ${license.git.copyrightYears} the original author or authors.
+ *    Copyright 2010-2020 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -60,6 +60,9 @@ public class DefaultSqlSession implements SqlSession {
     this.executor = executor;
     this.dirty = false;
     this.autoCommit = autoCommit;
+
+    // 日志
+    System.out.println("SEQ_SESSION_STARTED");
   }
 
   public DefaultSqlSession(Configuration configuration, Executor executor) {
@@ -267,6 +270,9 @@ public class DefaultSqlSession implements SqlSession {
     } finally {
       ErrorContext.instance().reset();
     }
+
+    // 日志
+    System.out.println("SEQ_SESSION_CLOSED");
   }
 
   private void closeCursors() {
