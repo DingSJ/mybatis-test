@@ -24,10 +24,11 @@
     <!-- 标签有顺序 -->
 
     <!-- 1. 属性值 -->
-    <properties>
+    <properties resource="org/test/mapper/myprop.prop">
         <property name="P_aa" value="V_aaaa"/>
         <property name="P_bb" value="V_bbb"/>
         <property name="P_cc" value="V_ccc"/>
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
     </properties>
 
     <!-- 2. 设置参数 -->
@@ -38,9 +39,14 @@
     <!-- 3. 类型命名 -->
     <typeAliases>
         <typeAlias type="org.test.a_test.User" alias="User"/>
+        <package name="org.test.a_test"></package>
     </typeAliases>
 
     <!-- 4. 类型处理器 -->
+    <typeHandlers>
+        <package name="" />
+        <!--<typeHandler handler="" javaType="" jdbcType="" />-->
+    </typeHandlers>
 
     <!-- 5. 对象工厂 -->
 
@@ -51,7 +57,7 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="driver" value="${driver}"/>
                 <property name="url" value="jdbc:mysql://localhost:3307/mytestdb?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;serverTimezone=GMT%2B8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
@@ -72,7 +78,9 @@
 
 
     <!-- 8. 数据库厂商标识-->
-    <databaseIdProvider type="mysql"/>
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"></property>
+    </databaseIdProvider>
 
     <!-- 9. 映射器 -->
     <mappers>
