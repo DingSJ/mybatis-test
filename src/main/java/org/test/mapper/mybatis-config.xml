@@ -44,8 +44,8 @@
 
     <!-- 4. 类型处理器 -->
     <typeHandlers>
-        <package name="" />
-        <!--<typeHandler handler="" javaType="" jdbcType="" />-->
+        <!--<package name="" />-->
+        <typeHandler handler="org.test.a_test.MyStringTypeHandler" javaType="String" jdbcType="VARCHAR" />
     </typeHandlers>
 
     <!-- 5. 对象工厂 -->
