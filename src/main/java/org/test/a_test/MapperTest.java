@@ -35,8 +35,16 @@ public class MapperTest {
         User user = mapper.selectUser(1);
         System.out.println(user);
 
-        User2 user2 = mapper.selectUser2(1,"AAA");
+
+        // 级联查询传递多个参数 column="{id=template_id,name=template_name}"
+        User2 user_2 = mapper.selectUser2(1,"AAA");
+        System.out.println("--------->>> User: " + user_2);
+
+        User2 user2 = mapper.selectUser3(new QueryUserParam(1,"AAA"));
         System.out.println(user2);
+
+        User user3 = mapper.selectUser4(new UserParam(3, "CCC"));
+        System.out.println(user3);
       }
     }
 }

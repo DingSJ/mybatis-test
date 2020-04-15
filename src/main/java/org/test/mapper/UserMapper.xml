@@ -15,22 +15,35 @@
       <result column="name" property="name"></result>
       <result column="addr" property="addr"></result>
       <result column="desc" property="desc"></result>
-      <association property="user" column="name" select="org.test.a_test.UserMapper.selectUserByName"/>
+      <association property="user" column="{name=name,addr=addr}" select="org.test.a_test.UserMapper.selectUserByName"/>
   </resultMap>
 
-  <select id="selectUserByName" parameterType="string" resultType="User">
-    select * from user where `name`=#{name} limit 1
+  <select id="selectUserByName" parameterType="hashmap" resultType="User">
+    select * from user where `name`=#{name} and addr=#{addr} limit 1
   </select>
 
-  <select id="selectUser2" parameterType="hashmap" resultMap="userMap"
+  <select id="selectUser2" parameterType="map" resultMap="userMap"
           databaseId="mysql" statementType="PREPARED"
           timeout="1" resultOrdered="true"
   >
     select id, `name`, addr, `desc` from `user` where id = #{id} and `name`= #{name}
   </select>
 
+  <select id="selectUser3" parameterType="QueryUserParam" resultMap="userMap"
+          databaseId="mysql" statementType="PREPARED"
+          timeout="1" resultOrdered="true"
+  >
+    select id, `name`, addr, `desc` from `user` where id = #{id} and `name`= #{name}
+  </select>
+
+
   <select id="selectUser" parameterType="int" resultType="User" databaseId="oracle">
     select * from user where id = #{id}
+  </select>
+
+
+  <select id="selectUser4" parameterType="UserParam" resultType="User">
+    select * from user where id = #{id} and `name`=#{name}
   </select>
 
 

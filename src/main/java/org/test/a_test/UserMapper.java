@@ -28,4 +28,8 @@ public interface UserMapper {
 
 
   User2 selectUser2(@Param("id") int id,@Param("name") String name);
+
+  User2 selectUser3(QueryUserParam user);
+
+  User selectUser4(UserParam aaa);
 }
