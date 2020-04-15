@@ -51,6 +51,9 @@
     <!-- 5. 对象工厂 -->
 
     <!-- 6. 插件 -->
+<!--    <plugins>
+        <plugin interceptor=""></plugin>
+    </plugins>-->
 
     <!-- 7. 环境配置 -->
     <environments default="development">
@@ -71,6 +74,8 @@
                 <property name="url" value="jdbc:mysql://localhost:3307/mytestdb?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;serverTimezone=GMT%2B8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
+                <property name="poolPingEnabled" value="true"/>
+                <property name="poolPingQuery" value="SELECT 1 from DUAL"/>
             </dataSource>
         </environment>
     </environments>
@@ -80,10 +85,12 @@
     <!-- 8. 数据库厂商标识-->
     <databaseIdProvider type="DB_VENDOR">
         <property name="MySQL" value="mysql"></property>
+        <property name="Oracle" value="oracle"></property>
     </databaseIdProvider>
 
     <!-- 9. 映射器 -->
     <mappers>
+        <!--<package name="org.test.mapper"/>-->
         <mapper resource="org/test/mapper/UserMapper.xml"/>
     </mappers>
 

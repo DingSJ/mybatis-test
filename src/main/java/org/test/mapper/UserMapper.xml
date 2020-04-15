@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
-
-       Copyright 2010-2020 the original author or authors.
-
-       Licensed under the Apache License, Version 2.0 (the "License");
-       you may not use this file except in compliance with the License.
-       You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-       Unless required by applicable law or agreed to in writing, software
-       distributed under the License is distributed on an "AS IS" BASIS,
-       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-       See the License for the specific language governing permissions and
-       limitations under the License.
-
--->
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.test.a_test.UserMapper">
-  <select id="selectUser" parameterType="_int" resultType="User">
+  <select id="selectUser" parameterType="int" resultType="User"
+          databaseId="mysql" statementType="PREPARED"
+          timeout="1" resultOrdered="false"
+  >
+    select * from user where id = #{id}
+  </select>
+
+  <resultMap id="userMap" type="User2">
+      <id property="id" column="id" />
+      <result column="name" property="name"></result>
+      <result column="addr" property="addr"></result>
+      <result column="desc" property="desc"></result>
+      <association property="user" column="name" select="org.test.a_test.UserMapper.selectUserByName"/>
+  </resultMap>
+
+  <select id="selectUserByName" parameterType="string" resultType="User">
+    select * from user where `name`=#{name} limit 1
+  </select>
+
+  <select id="selectUser2" parameterType="hashmap" resultMap="userMap"
+          databaseId="mysql" statementType="PREPARED"
+          timeout="1" resultOrdered="true"
+  >
+    select id, `name`, addr, `desc` from `user` where id = #{id} and `name`= #{name}
+  </select>
+
+  <select id="selectUser" parameterType="int" resultType="User" databaseId="oracle">
     select * from user where id = #{id}
   </select>
 

@@ -34,6 +34,9 @@ public class MapperTest {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.selectUser(1);
         System.out.println(user);
+
+        User2 user2 = mapper.selectUser2(1,"AAA");
+        System.out.println(user2);
       }
     }
 }

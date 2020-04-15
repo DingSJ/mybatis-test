@@ -27,4 +27,5 @@ public interface UserMapper {
   List<User> selectUserList(int limit);
 
 
+  User2 selectUser2(@Param("id") int id,@Param("name") String name);
 }
