@@ -181,6 +181,9 @@ public class DefaultResultSetHandler implements ResultSetHandler {
   public List<Object> handleResultSets(Statement stmt) throws SQLException {
     ErrorContext.instance().activity("handling results").object(mappedStatement.getId());
 
+
+    System.out.println("handleResultSets --->> ");
+
     final List<Object> multipleResults = new ArrayList<>();
 
     int resultSetCount = 0;
