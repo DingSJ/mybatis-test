@@ -55,16 +55,20 @@ public class MapperMethod {
   }
 
   public Object execute(SqlSession sqlSession, Object[] args) {
-    Object result;
+    System.out.println(".... Query From DB ....");
+    Object result = null;
     switch (command.getType()) {
       case INSERT: {
-        Object param = method.convertArgsToSqlCommandParam(args);
-        result = rowCountResult(sqlSession.insert(command.getName(), param));
+
+        handleSql(sqlSession,method,command,result,args);
+//        Object param = method.convertArgsToSqlCommandParam(args);
+//        result = rowCountResult(sqlSession.insert(command.getName(), param));
         break;
       }
       case UPDATE: {
-        Object param = method.convertArgsToSqlCommandParam(args);
-        result = rowCountResult(sqlSession.update(command.getName(), param));
+        handleSql(sqlSession,method,command,result,args);
+//        Object param = method.convertArgsToSqlCommandParam(args);
+//        result = rowCountResult(sqlSession.update(command.getName(), param));
         break;
       }
       case DELETE: {
@@ -73,6 +77,7 @@ public class MapperMethod {
         break;
       }
       case SELECT:
+        System.out.println("执行查询语句");
         if (method.returnsVoid() && method.hasResultHandler()) {
           executeWithResultHandler(sqlSession, args);
           result = null;
@@ -102,6 +107,16 @@ public class MapperMethod {
           + " attempted to return null from a method with a primitive return type (" + method.getReturnType() + ").");
     }
     return result;
+  }
+
+  /**
+   * 自定义方法处理
+   * */
+  private void handleSql(SqlSession sqlSession, MethodSignature method, SqlCommand command, Object result, Object[] args) {
+    System.out.println("自定义 sql 方法");
+    Object param = method.convertArgsToSqlCommandParam(args);
+    result = rowCountResult(sqlSession.insert(command.getName(), param));
+    System.out.println("Result: " + result);
   }
 
   private Object rowCountResult(int rowCount) {
@@ -306,6 +321,7 @@ public class MapperMethod {
     }
 
     public Object convertArgsToSqlCommandParam(Object[] args) {
+      //
       return paramNameResolver.getNamedParams(args);
     }
 

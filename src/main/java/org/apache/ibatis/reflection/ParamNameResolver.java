@@ -69,6 +69,7 @@ public class ParamNameResolver {
       String name = null;
       for (Annotation annotation : paramAnnotations[paramIndex]) {
         if (annotation instanceof Param) {
+          System.out.println("发现注解 Param :");
           hasParamAnnotation = true;
           name = ((Param) annotation).value();
           break;
@@ -78,11 +79,13 @@ public class ParamNameResolver {
         // @Param was not specified.
         if (useActualParamName) {
           name = getActualParamName(method, paramIndex);
+          System.out.println("useActualParamName : " + name);
         }
         if (name == null) {
           // use the parameter index as the name ("0", "1", ...)
           // gcode issue #71
           name = String.valueOf(map.size());
+          System.out.println("下标式注解 : " + name);
         }
       }
       map.put(paramIndex, name);
@@ -120,6 +123,7 @@ public class ParamNameResolver {
    * @return the named params
    */
   public Object getNamedParams(Object[] args) {
+    System.out.println("获取参数未知，param1, 1");
     final int paramCount = names.size();
     if (args == null || paramCount == 0) {
       return null;
