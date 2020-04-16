@@ -25,11 +25,13 @@ import java.util.Optional;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import com.mysql.cj.xdevapi.JsonString;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.binding.MapperMethod.ParamMap;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.apache.logging.log4j.core.util.JsonUtils;
 
 public class ParamNameResolver {
 
@@ -69,7 +71,7 @@ public class ParamNameResolver {
       String name = null;
       for (Annotation annotation : paramAnnotations[paramIndex]) {
         if (annotation instanceof Param) {
-          System.out.println("发现注解 Param :");
+          System.out.println( this.getClass().getName() +  " - 发现注解 Param");
           hasParamAnnotation = true;
           name = ((Param) annotation).value();
           break;
@@ -123,7 +125,7 @@ public class ParamNameResolver {
    * @return the named params
    */
   public Object getNamedParams(Object[] args) {
-    System.out.println("获取参数未知，param1, 1");
+    System.out.println(this.getClass().getName() +  " - 获取参数位置，param1, 1");
     final int paramCount = names.size();
     if (args == null || paramCount == 0) {
       return null;

@@ -55,7 +55,7 @@ public class MapperMethod {
   }
 
   public Object execute(SqlSession sqlSession, Object[] args) {
-    System.out.println(".... Query From DB ....");
+    System.out.println(this.getClass().getName() +  " - .... Query From DB ....");
     Object result = null;
     switch (command.getType()) {
       case INSERT: {
@@ -77,7 +77,7 @@ public class MapperMethod {
         break;
       }
       case SELECT:
-        System.out.println("执行查询语句");
+        System.out.println(this.getClass().getName() +  " - 执行查询语句");
         if (method.returnsVoid() && method.hasResultHandler()) {
           executeWithResultHandler(sqlSession, args);
           result = null;

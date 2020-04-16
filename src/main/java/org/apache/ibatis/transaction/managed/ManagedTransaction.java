@@ -87,6 +87,7 @@ public class ManagedTransaction implements Transaction {
     if (log.isDebugEnabled()) {
       log.debug("Opening JDBC Connection");
     }
+    System.out.println(this.getClass().getName() +  " - openConnection ");
     this.connection = this.dataSource.getConnection();
     if (this.level != null) {
       this.connection.setTransactionIsolation(this.level.getLevel());

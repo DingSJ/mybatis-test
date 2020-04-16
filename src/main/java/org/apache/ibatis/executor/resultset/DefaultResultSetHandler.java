@@ -182,7 +182,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
     ErrorContext.instance().activity("handling results").object(mappedStatement.getId());
 
 
-    System.out.println("handleResultSets --->> ");
+    System.out.println(this.getClass().getName() + " - handleResultSets --->> ");
 
     final List<Object> multipleResults = new ArrayList<>();
 

@@ -57,7 +57,7 @@ public class SimpleExecutor extends BaseExecutor {
   public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
     Statement stmt = null;
     try {
-      System.out.println("doQuery   ------ > boundSql: " + boundSql.getSql());
+      System.out.println(this.getClass().getName() + " - doQuery   ------ > boundSql: " + boundSql.getSql());
       Configuration configuration = ms.getConfiguration();
       StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
       stmt = prepareStatement(handler, ms.getStatementLog());
