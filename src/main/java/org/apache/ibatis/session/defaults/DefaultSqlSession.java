@@ -62,7 +62,7 @@ public class DefaultSqlSession implements SqlSession {
     this.autoCommit = autoCommit;
 
     // 日志
-    System.out.println("SEQ_SESSION_STARTED");
+    System.out.println("DefaultSqlSession - SEQ_SESSION_STARTED");
   }
 
   public DefaultSqlSession(Configuration configuration, Executor executor) {
