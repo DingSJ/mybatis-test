@@ -51,9 +51,12 @@
     <!-- 5. 对象工厂 -->
 
     <!-- 6. 插件 -->
-<!--    <plugins>
-        <plugin interceptor=""></plugin>
-    </plugins>-->
+    <plugins>
+        <plugin interceptor="org.test.plugin.MyQueryLimitPlugin">
+          <property name="limit" value="100"/>
+          <property name="type" value="mysql"/>
+        </plugin>
+    </plugins>
 
     <!-- 7. 环境配置 -->
     <environments default="development">
