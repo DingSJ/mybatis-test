@@ -8,6 +8,10 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 import java.sql.Connection;
 import java.util.Properties;
 
+/**
+ * 注意：注解式必须的
+ * */
+
 @Intercepts(
     {
         @Signature(
@@ -19,6 +23,7 @@ import java.util.Properties;
 )
 public class MyQueryLimitPlugin implements Interceptor {
 
+  /** 配置文件添加参数 */
   private int limit;
   private String type;
 
