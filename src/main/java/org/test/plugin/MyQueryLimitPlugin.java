@@ -10,20 +10,22 @@ import java.util.Properties;
 
 /**
  * 注意：注解式必须的
- * */
+ */
 
 @Intercepts(
-    {
-        @Signature(
-            type = StatementHandler.class,
-            method = "prepare",
-            args = {Connection.class,Integer.class}
-        )
-    }
+  {
+    @Signature(
+      type = StatementHandler.class,
+      method = "prepare",
+      args = {Connection.class, Integer.class}
+    )
+  }
 )
 public class MyQueryLimitPlugin implements Interceptor {
 
-  /** 配置文件添加参数 */
+  /**
+   * 配置文件添加参数
+   */
   private int limit;
   private String type;
 
@@ -50,7 +52,15 @@ public class MyQueryLimitPlugin implements Interceptor {
     String sql = (String) metaObject.getValue("delegate.boundSql.sql");
 
     String limitSql = null;
-    if ("mysql".equals(this.type) && sql.indexOf("QUERY_LIMIT_TABLE_PLUGIN") == -1) {
+
+    /** 判断sql 执行条件
+     * 1. mysql 类型数据库
+     * 2. 该语句是查询语句 select
+     * 3. 当前SQL没有被重复处理
+     * */
+    if ("mysql".equals(this.type) &&
+      sql != null && sql.trim().toLowerCase().trim().indexOf("select") == 0 &&
+      sql.indexOf("QUERY_LIMIT_TABLE_PLUGIN") == -1) {
 
       limitSql = "select * from (" + sql.trim() + ") QUERY_LIMIT_TABLE_PLUGIN limit " + this.limit;
     }
