@@ -13,15 +13,16 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.test.a_test;
+package org.test.lazyfatch;
 
-public class User2 {
+import java.util.List;
+
+public class User {
   private int id;
   private String name;
   private String addr;
-  private String desc;
 
-  User user;
+  List<org.test.a_test.User> userList;
 
   public int getId() {
     return id;
@@ -47,31 +48,21 @@ public class User2 {
     this.addr = addr;
   }
 
-  public String getDesc() {
-    return desc;
+  public List<org.test.a_test.User> getUserList() {
+    return userList;
   }
 
-  public void setDesc(String desc) {
-    this.desc = desc;
+  public void setUserList(List<org.test.a_test.User> userList) {
+    this.userList = userList;
   }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
-
 
   @Override
   public String toString() {
-    return "User2{" +
+    return "User{" +
       "id=" + id +
       ", name='" + name + '\'' +
       ", addr='" + addr + '\'' +
-      ", desc='" + desc + '\'' +
-      ", user=" + user +
+      ", userList=" + userList +
       '}';
   }
 }

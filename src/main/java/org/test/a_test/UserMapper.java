@@ -16,6 +16,7 @@
 package org.test.a_test;
 
 import org.apache.ibatis.annotations.Param;
+import org.test.lazyfatch.Person;
 
 import java.util.List;
 
@@ -32,4 +33,9 @@ public interface UserMapper {
   User2 selectUser3(QueryUserParam user);
 
   User selectUser4(UserParam aaa);
+
+  /** 查询用户信息 */
+  List<org.test.lazyfatch.User> queryUserInfo();
+
+  List<Person> queryPersonList();
 }

@@ -45,18 +45,18 @@
     <!-- 4. 类型处理器 -->
     <typeHandlers>
         <!--<package name="" />-->
-        <typeHandler handler="org.test.a_test.MyStringTypeHandler" javaType="String" jdbcType="VARCHAR" />
+        <!--<typeHandler handler="org.test.a_test.MyStringTypeHandler" javaType="String" jdbcType="VARCHAR" />-->
     </typeHandlers>
 
     <!-- 5. 对象工厂 -->
 
     <!-- 6. 插件 -->
-    <plugins>
+    <!--<plugins>
         <plugin interceptor="org.test.plugin.MyQueryLimitPlugin">
           <property name="limit" value="100"/>
           <property name="type" value="mysql"/>
         </plugin>
-    </plugins>
+    </plugins>-->
 
     <!-- 7. 环境配置 -->
     <environments default="development">
