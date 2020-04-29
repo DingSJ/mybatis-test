@@ -59,16 +59,15 @@ public class MapperMethod {
     Object result = null;
     switch (command.getType()) {
       case INSERT: {
-
-        handleSql(sqlSession,method,command,result,args);
-//        Object param = method.convertArgsToSqlCommandParam(args);
-//        result = rowCountResult(sqlSession.insert(command.getName(), param));
+//        handleSql(sqlSession,method,command,result,args);
+        Object param = method.convertArgsToSqlCommandParam(args);
+        result = rowCountResult(sqlSession.insert(command.getName(), param));
         break;
       }
       case UPDATE: {
-        handleSql(sqlSession,method,command,result,args);
-//        Object param = method.convertArgsToSqlCommandParam(args);
-//        result = rowCountResult(sqlSession.update(command.getName(), param));
+//        handleSql(sqlSession,method,command,result,args);
+        Object param = method.convertArgsToSqlCommandParam(args);
+        result = rowCountResult(sqlSession.update(command.getName(), param));
         break;
       }
       case DELETE: {
@@ -321,7 +320,6 @@ public class MapperMethod {
     }
 
     public Object convertArgsToSqlCommandParam(Object[] args) {
-      //
       return paramNameResolver.getNamedParams(args);
     }
 

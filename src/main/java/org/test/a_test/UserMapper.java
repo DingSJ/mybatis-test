@@ -16,6 +16,7 @@
 package org.test.a_test;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.test.lazyfatch.Person;
 
 import java.util.List;
@@ -38,4 +39,12 @@ public interface UserMapper {
   List<org.test.lazyfatch.User> queryUserInfo();
 
   List<Person> queryPersonList();
+
+  /**
+   * 分页查询
+   * */
+  List<org.test.queryPage.User> selectUsersWithPage();
+
+  List<org.test.queryPage.User> selectUsersWithPage2(RowBounds rowBounds);
+  org.test.queryPage.User selectUserById(int id);
 }

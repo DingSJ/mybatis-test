@@ -62,6 +62,10 @@ public class PreparedStatementHandler extends BaseStatementHandler {
   public <E> List<E> query(Statement statement, ResultHandler resultHandler) throws SQLException {
     PreparedStatement ps = (PreparedStatement) statement;
     System.out.println(this.getClass().getName() + " - query  --->> ps : " + ps.getMetaData().toString());
+
+    // 预处理语句，占位符替换为参数值
+    // 1. com.mysql.cj.jdbc.ClientPreparedStatement: select id,name,addr,`desc` from user where id=?
+    // 2. com.mysql.cj.jdbc.ClientPreparedStatement: select id,name,addr,`desc` from user where id=199
     ps.execute();
     return resultSetHandler.handleResultSets(ps);
   }

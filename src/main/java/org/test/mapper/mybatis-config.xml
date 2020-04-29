@@ -51,12 +51,17 @@
     <!-- 5. 对象工厂 -->
 
     <!-- 6. 插件 -->
-    <!--<plugins>
-        <plugin interceptor="org.test.plugin.MyQueryLimitPlugin">
+    <plugins>
+        <!--<plugin interceptor="org.test.plugin.MyQueryLimitPlugin">
           <property name="limit" value="100"/>
           <property name="type" value="mysql"/>
-        </plugin>
-    </plugins>-->
+        </plugin>-->
+
+      <plugin interceptor="com.github.pagehelper.PageHelper">
+        <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+        <property name="dialect" value="mysql"/>
+      </plugin>
+    </plugins>
 
     <!-- 7. 环境配置 -->
     <environments default="development">
