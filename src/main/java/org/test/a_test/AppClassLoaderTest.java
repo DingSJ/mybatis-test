@@ -26,7 +26,8 @@ public class AppClassLoaderTest{
 
 
   /**
-   * 在虚拟机启动的时候会初始化BootstrapClassLoader，然后在Launcher类中去加载 ExtClassLoader、AppClassLoader，
+   * 在虚拟机启动的时候会初始化BootstrapClassLoader，
+   * 然后在Launcher类中去加载 ExtClassLoader、AppClassLoader，
    * 并将AppClassLoader的parent设置为ExtClassLoader，并设置线程上下文类加载器。
    *
    *

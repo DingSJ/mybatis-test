@@ -22,8 +22,7 @@
 <mapper namespace="org.test.a_test.UserMapper">
   <select id="selectUser" parameterType="int" resultType="User"
           databaseId="mysql" statementType="PREPARED"
-          timeout="1" resultOrdered="false"
-  >
+          timeout="1" resultOrdered="false">
     select * from user where id = #{id}
   </select>
 
@@ -40,7 +39,6 @@
   </select>
 
   <select id="selectUser2" parameterType="map" resultMap="userMap"
-          databaseId="mysql" statementType="PREPARED"
           timeout="1" resultOrdered="true"
   >
     select id, `name`, addr, `desc` from `user` where id = #{id} and `name`= #{name}

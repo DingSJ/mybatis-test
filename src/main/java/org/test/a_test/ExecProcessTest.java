@@ -15,6 +15,7 @@
  */
 package org.test.a_test;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -31,7 +32,7 @@ public class ExecProcessTest {
 
       String res = "org/test/mapper/mybatis-config.xml";
       InputStream inputStream = Resources.getResourceAsStream(res);
-      SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream,"prod");
+      SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream,"development");
       inputStream.close();
       try (SqlSession sqlSession = sessionFactory.openSession()) {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
@@ -42,8 +43,10 @@ public class ExecProcessTest {
 
 //        User2 user2 = mapper.selectUser3(new QueryUserParam(1,"AAA"));
 
-        System.out.println("[MAIN] : user1 - >>" + user1);
+        System.out.println("[MAIN] : user1 - >>" + JSON.toJSONString(user1));
 //        System.out.println("[MAIN] : user2 - >>" + user2);
+
+        sqlSession.close();
       }
     }
 }

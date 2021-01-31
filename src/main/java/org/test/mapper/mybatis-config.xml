@@ -51,17 +51,17 @@
     <!-- 5. 对象工厂 -->
 
     <!-- 6. 插件 -->
-    <plugins>
+<!--    <plugins>-->
         <!--<plugin interceptor="org.test.plugin.MyQueryLimitPlugin">
           <property name="limit" value="100"/>
           <property name="type" value="mysql"/>
         </plugin>-->
 
-      <plugin interceptor="com.github.pagehelper.PageHelper">
-        <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
-        <property name="dialect" value="mysql"/>
-      </plugin>
-    </plugins>
+      <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+<!--      <plugin interceptor="com.github.pagehelper.PageHelper">-->
+<!--        <property name="dialect" value="mysql"/>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
 
     <!-- 7. 环境配置 -->
     <environments default="development">
@@ -69,7 +69,7 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
-                <property name="url" value="jdbc:mysql://localhost:3307/mytestdb?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;serverTimezone=GMT%2B8"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;serverTimezone=GMT%2B8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
             </dataSource>
@@ -79,7 +79,7 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3307/mytestdb?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;serverTimezone=GMT%2B8"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;serverTimezone=GMT%2B8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
                 <property name="poolPingEnabled" value="true"/>
@@ -91,10 +91,10 @@
 
 
     <!-- 8. 数据库厂商标识-->
-    <databaseIdProvider type="DB_VENDOR">
-        <property name="MySQL" value="mysql"></property>
-        <property name="Oracle" value="oracle"></property>
-    </databaseIdProvider>
+<!--    <databaseIdProvider type="DB_VENDOR">-->
+<!--        <property name="MySQL" value="mysql"></property>-->
+<!--        <property name="Oracle" value="oracle"></property>-->
+<!--    </databaseIdProvider>-->
 
     <!-- 9. 映射器 -->
     <mappers>

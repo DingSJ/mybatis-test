@@ -39,6 +39,7 @@ public final class LogFactory {
     tryImplementation(LogFactory::useNoLogging);
   }
 
+
   private LogFactory() {
     // disable construction
   }
